@@ -6,18 +6,6 @@ NSNotificationCenter+AutoreleasingObserver
 <p>Add observers without forgetting to removing them on dealloc</p>
 
 
-NSNotificationCenter+AutoreleasingObserver
-==========================================
-
-<p>Create a UIButton with a badge on top. Easily customizable.
-Your UIButton can be any button you wish to use. The badge on top can display any number or string of any size or length.</p>
-
-<img alt="ScreenShot BarButtonItem" src="https://github.com/mikemtol/UIBarButtonItem-Badge/blob/master/screenshot2.png?raw=true" width="320px"/>
-
-
-How To Get Started
-------------------
-
 #### Installation 
 
 It's quite easy, just download and add "NSNotificationCenter+AutoreleasingObserver.h" and "NSNotificationCenter+AutoreleasingObserver.m" into your xcodeproject.
