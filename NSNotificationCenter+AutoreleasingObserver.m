@@ -55,6 +55,11 @@ const char* ksStoreObjectNotifCenterKey = "ksStoreObjectNotifCenterKey";
     objc_setAssociatedObject(self, ksStoreObjectKey, objectToStore, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// The magic is here,
+// when ObserverObjectStorage (an associated object) is being erased in
+// step 4 of the Deallocation Timeline, we call on the referenced notification center
+// to remove the storedObject as an observer, thus cleaning up the observer automatically
+//
 -(void)dealloc
 {
     [self.notifCenter removeObserver:self.objectToStore];
@@ -72,6 +77,7 @@ const char* ksAutoreleasingObserverObjectKey = "ksAutoreleasingObserverObjectKey
     storage.notifCenter = self;
     storage.objectToStore = o;
     
+    // save associated object with strong reference in order to trigger step 4 of deallocation timeline
     objc_setAssociatedObject(receiver, ksAutoreleasingObserverObjectKey, storage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
